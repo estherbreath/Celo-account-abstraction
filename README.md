@@ -68,14 +68,14 @@ interface IERC20 {
 }
 
 contract AccountAbstraction{
-    // Address of the Celo token Gold contract
-    address private constant cGLDAddress = 0x471EcE3750Da237f93B8E339c536989b8978a438;
+    // Address of the CELO token contract
+    address private constant celoAddress = 0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9;
     // Address of the Celo Dollars token contract
-    address private constant cUSDAddress = 0x765DE816845861e75A25fCA122bb6898B8B1282a;
+    address private constant cUSDAddress = 0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
     
-    // Returns the balance of the user's cGLD and cUSD tokens
+    // Returns the balance of the user's CELO and cUSD tokens
     function getBalances(address user) public view returns (uint256, uint256) {
-        uint256 cGLDBalance = IERC20(cGLDAddress).balanceOf(user);
+        uint256 cGLDBalance = IERC20(celoAddress).balanceOf(user);
         uint256 cUSDBalance = IERC20(cUSDAddress).balanceOf(user);
         return (cGLDBalance, cUSDBalance);
     }
@@ -85,9 +85,9 @@ contract AccountAbstraction{
         require(IERC20(cUSDAddress).transfer(recipient, amount), "Transfer failed.");
     }
     
-    // Sends cGLD tokens to the recipient
-    function sendCGLD(address recipient, uint256 amount) public {
-        require(IERC20(cGLDAddress).transfer(recipient, amount), "Transfer failed.");
+    // Sends CELO tokens to the recipient
+    function sendCELO(address recipient, uint256 amount) public {
+        require(IERC20(celoAddress).transfer(recipient, amount), "Transfer failed.");
     }
 }
 ```
