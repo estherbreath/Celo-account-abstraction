@@ -1,6 +1,17 @@
 # A Complete Tutorial for Account Abstraction on Celo Network
 
 
+
+## Table of Contents
+- [A Complete Tutorial for Account Abstraction on Celo Network](#a-complete-tutorial-for-account-abstraction-on-celo-network)
+  - [Table of Contents](#table-of-contents)
+  - [What Is Celo All About?](#what-is-celo-all-about)
+  - [What Is Account Abstraction?](#what-is-account-abstraction)
+  - [How Does Account Abstraction Work on the Celo Blockchain?](#how-does-account-abstraction-work-on-the-celo-blockchain)
+  - [Benefits of Account Abstraction](#benefits-of-account-abstraction)
+  - [Downsides of Account Abstraction](#downsides-of-account-abstraction)
+  - [Conclusion](#conclusion)
+
 ## What Is Celo All About?
 Some may not be familiar with Celo before now, but not to worry, that is the basis for this tutorial. It will help you understand, explore and take opportunities available on the Celo platform.
 Let’s get started:
