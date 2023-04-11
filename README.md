@@ -4,9 +4,11 @@ Some may not be familiar with Celo before now, but not to worry, that is the bas
 Let’s get started:
 
  [Celo](https://docs.celo.org/developer) is a platform that empowers people around the world by providing them with access to financial tools and services. 
-You probably must have heard of Bitcoin or Ethereum and the likes of them, Celo is similar but not the same. Celo is an open-source blockchain platform that aims to create a more inclusive financial system by providing access to digital assets and decentralized applications (DApps) to anyone with a mobile first approach.
+You probably must have heard of Bitcoin or Ethereum and the likes of them, Celo is similar but not the same. 
 
-Prior to now, blockchain users needed very quality network to access a finacial service or carry out any form of transaction. Celo blockchain focuses on mobile-first design just as we mentioned earlier, now it has become easy for users to access financial services through their mobile phones, with limited internet connectivity. Remember it is said that there are 6 Billion smartphones on Earth!
+[Celo](https://docs.celo.org/developer) is also an open-source blockchain platform that aims to create a more inclusive financial system by providing access to digital assets and decentralized applications (DApps) to anyone with a mobile first approach.
+
+Prior to now, blockchain users needed very quality network to access a finacial service or carry out any form of transaction. [Celo](https://docs.celo.org/developer) blockchain focuses on mobile-first design just as we mentioned earlier, now it has become easy for users to access financial services through their mobile phones, with limited internet connectivity. Remember it is said that there are 6 Billion smartphones on Earth!
 Celo is taking them all into consideration.
 
 What more is that decentralized applications (Dapps) can be built on its blockchain, as well as peer-to-peer lending, remittances, and micropayments.
@@ -23,7 +25,7 @@ Traditionally, each user must pay a fee called gas fee to have their transaction
 The stress of paying gas fee before a transaction is implemented is actually a pin in the neck, especially since it is not a fixed amount. 
 
 This is where account abstraction comes in handy. Account abstraction does is a feature that enables smart contracts to pay transaction fees on behalf of their users (gas fees). This is done in the native currency of the blockchain. 
-Account abstraction basically allows smart contracts to pay gas fees on behalf of their users. This means that users do not need to go through the trouble of paying gas fees themselves. This will make them focus on interacting with the DApp. The smart contract can use its own funds to pay the gas fees, which can be designed to be recovered from users in a variety of ways.
+**[Account abstraction](https://www.alchemy.com/account-abstraction)** basically allows smart contracts to pay gas fees on behalf of their users. This means that users do not need to go through the trouble of paying gas fees themselves. This will make them focus on interacting with the DApp. The smart contract can use its own funds to pay the gas fees, which can be designed to be recovered from users in a variety of ways.
 
 ### How Does Account Abstraction Work on the Celo Blockchain?
 We are making progress isn't it?
