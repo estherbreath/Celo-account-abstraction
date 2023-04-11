@@ -52,7 +52,9 @@ The account abstraction mechanism allows smart contracts to interact with multip
 
 Account abstraction on Celo allows smart contracts to be designated as "paying accounts." These contracts are given a special type of account that can hold both cUSD and [CELO](https://docs.celo.org/developer) tokens.  When a user interacts with a dApp that uses account abstraction, the smart contract can use its funds to pay the gas fees for the transaction. The contract can then charge the user for the gas fees in cUSD or other tokens. How does that sound?
 
-Smart contracts are written in a specific programming language, such as Solidity, and are designed to interact with the native currency. This means that if a smart contract wants to interact with another currency or asset, it needs to include specific logic to do so. 
+Smart contracts are written in a specific programming language, such as Solidity, and are designed to interact with the native currency. This means that if a smart contract wants to interact with another currency or asset, it needs to include specific logic to do so.
+
+Here's an example of a Solidity smart contract that can be used to transfer and read the balances of CELO and cUSD.
 
 ```solidity 
 // SPDX-License-Identifier: GPL-3.0
