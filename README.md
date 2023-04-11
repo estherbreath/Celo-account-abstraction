@@ -1,18 +1,21 @@
-##  A COMPLETE TUTORIAL FOR ACCOUNT ABSTRACTION ON CELO NETWORK
-### What is Celo all about?
+## A Complete Tutorial for Account Abstraction on Celo Network
+
+
+### What Is Celo All About?
 Some may not be familiar with Celo before now, but not to worry, that is the basis for this tutorial. It will help you understand, explore and take opportunities available on Celo platform.
 Let’s get started:
 
- [Celo](https://docs.celo.org/developer) is a platform that empowers people around the world by providing them with access to financial tools and services. 
+[Celo](https://docs.celo.org/developer) is a platform that empowers people around the world by providing them with access to financial tools and services. 
 You probably must have heard of Bitcoin or Ethereum and the likes of them, Celo is similar but not the same. Celo is an open-source blockchain platform that aims to create a more inclusive financial system by providing access to digital assets and decentralized applications (DApps) to anyone with a mobile first approach.
 
 Prior to now, blockchain users needed very quality network to access a finacial service or carry out any form of transaction. Celo blockchain focuses on mobile-first design just as we mentioned earlier, now it has become easy for users to access financial services through their mobile phones, with limited internet connectivity. Remember it is said that there are 6 Billion smartphones on Earth!
 Celo is taking them all into consideration.
 
 What more is that decentralized applications (Dapps) can be built on its blockchain, as well as peer-to-peer lending, remittances, and micropayments.
- It uses a stablecoin called Celo Dollar (cUSD), which of course is pegged to the US dollar. The platform allows users to send and receive payments across different networks  like cryptocurrencies such as Bitcoin and Ethereum.
 
- ### What is Account Abstraction?
+It uses a stablecoin called Celo Dollar (cUSD), which of course is pegged to the US dollar. The platform allows users to send and receive payments across different networks  like cryptocurrencies such as Bitcoin and Ethereum.
+
+### What Is Account Abstraction?
 The ability to isolate the management of funds from the execution of smart contracts is referred to as account abstraction. It enables users to interact with smart contracts on the blockchain without having to hold the underlying cryptocurrency or token, to put it another way. This is accomplished using a method known as meta transactions.
 
 A meta transaction is simply a transaction that is started and signed by a user but carried out on their behalf by a third party. A relayer is a third party who acts on behalf of the user to pay the transaction fees in the underlying cryptocurrency (CELO). As a result, users can engage with smart contracts on the Celo network without owning any of the cryptocurrency.
