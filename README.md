@@ -16,10 +16,6 @@
 Some may not be familiar with Celo before now, but not to worry, that is the basis for this tutorial. It will help you understand, explore and take opportunities available on the Celo platform.
 Let’s get started:
 
-[Celo](https://docs.celo.org/developer) is a platform that empowers people around the world by providing them with access to financial tools and services. 
-You probably must have heard of Bitcoin or Ethereum and the likes of them, Celo is similar but not the same. Celo is an open-source blockchain platform that aims to create a more inclusive financial system by providing access to digital assets and decentralized applications (DApps) to anyone with a mobile-first approach.
-
-Prior to now, blockchain users needed a very quality network to access a financial service or carry out any form of transaction. The Celo blockchain focuses on mobile-first design just as we mentioned earlier and now it has become easier than ever for users to access financial services through their mobile phones, with limited internet connectivity. Remember it is said that there are more than [six billion smartphones](https://www.bankmycell.com/blog/how-many-phones-are-in-the-world) on Earth!
 Celo is taking them all into consideration.
 
 What is more is that decentralized applications (Dapps) can be built on its blockchain, as well as peer-to-peer lending, remittances, and micropayments.
@@ -36,8 +32,7 @@ Remember we said earlier that decentralized apps (Dapp) can be written on the Ce
 Traditionally, each user must pay a fee called the gas fee to have their transaction processed by the network. The amount of gas required for a transaction varies, and it is determined by the complexity of the transaction and the current network congestion. This means gas fees can be very expensive, especially during times of high network usage. 
 The stress of paying gas fees before a transaction is implemented is a pin in the neck, especially since it is not a fixed amount. 
 
-This is where account abstraction comes in handy. Account abstraction is a feature that enables smart contracts to pay transaction fees on behalf of their users (gas fees). This is done in the native currency of the blockchain. 
-Account abstraction allows smart contracts to pay gas fees on behalf of their users. This means that users do not need to go through the trouble of paying gas fees themselves. This will make them focus on interacting with the dApp. The smart contract can use its funds to pay the gas fees, which can be designed to be recovered from users in a variety of ways.
+
 
 ## How Does Account Abstraction Work on the Celo Blockchain?
 
