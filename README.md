@@ -1,118 +1,301 @@
-# A Complete Tutorial for Account Abstraction on Celo Network
-
-
+# Building Account Abstraction on the Celo Network
 
 ## Table of Contents
-- [A Complete Tutorial for Account Abstraction on Celo Network](#a-complete-tutorial-for-account-abstraction-on-celo-network)
-  - [Table of Contents](#table-of-contents)
-  - [What Is Celo All About?](#what-is-celo-all-about)
-  - [What Is Account Abstraction?](#what-is-account-abstraction)
-  - [How Does Account Abstraction Work on the Celo Blockchain?](#how-does-account-abstraction-work-on-the-celo-blockchain)
-  - [Benefits of Account Abstraction](#benefits-of-account-abstraction)
-  - [Downsides of Account Abstraction](#downsides-of-account-abstraction)
-  - [Conclusion](#conclusion)
 
-## What Is Celo All About?
-Some may not be familiar with Celo before now, but not to worry, that is the basis for this tutorial. It will help you understand, explore and take opportunities available on the Celo platform.
-Let’s get started:
+- [Building Account Abstraction on the Celo Network](#building-account-abstraction-on-the-celo-network)
+- [Table of Contents](#table-of-contents)
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Understanding Account Abstraction](#understanding-account-abstraction)
+- [Creating an Account Abstraction Contract](#creating-an-account-abstraction-contract)
+- [Deploying the Contract](#deploying-the-contract)
+- [Interacting with the Contract](#interacting-with-the-contract)
+- [Conclusion](#conclusion)
 
-Celo is taking them all into consideration.
+## Introduction
 
-What is more is that decentralized applications (Dapps) can be built on its blockchain, as well as peer-to-peer lending, remittances, and micropayments.
+**[Celo](https://docs.celo.org/developer)** is an open-source blockchain ecosystem that uses blockchain technology to enable decentralized finance and social impact projects. One of the core concepts of Celo is account abstraction, which allows developers to write smart contracts that can interact with different types of accounts, such as wallets and contracts, without needing to know the details of the underlying account.
 
-It uses a stablecoin called Celo Dollar (cUSD), which of course is pegged to the US dollar. The platform allows users to send and receive payments across different networks using cryptocurrencies such as Bitcoin and Ethereum.
+Account abstraction is a powerful feature in the world of blockchain technology that allows developers to create more user-friendly and secure smart contract interactions. The Celo network is one of the few blockchain platforms that support account abstraction, making it an ideal choice for developers who want to build decentralized applications that can leverage this feature.
 
-## What Is Account Abstraction?
-The ability to isolate the management of funds from the execution of smart contracts is referred to as account abstraction. It enables users to interact with smart contracts on the blockchain without having to hold the underlying cryptocurrency or token, to put it another way. This is accomplished using a method known as meta transactions.
+In this tutorial, I will provide a step-by-step guide to building an account abstraction contract on the Celo network using Solidity, and then deploying and interacting with it using the Celo SDK and JavaScript.
 
-A [meta transaction](https://docs.openzeppelin.com/learn/sending-gasless-transactions) is simply a transaction that is started and signed by a user but carried out on their behalf by a third party. A [relayer](https://hackernoon.com/what-is-a-transaction-relayer-and-how-does-it-work-bd1q3ywa) is a third party who acts on behalf of the user to pay the transaction fees in the underlying cryptocurrency (CELO). As a result, users can engage with smart contracts on the Celo network without owning any of the cryptocurrency.
+## Prerequisites
 
-Remember we said earlier that decentralized apps (Dapp) can be written on the Celo blockchain. In this system, the blockchain systems are held by smart contracts exclusively, not by [externally-owned accounts (EOAs)](https://ethereum.org/en/developers/docs/accounts/).
+Before you can start building an account abstraction contract on the Celo network, you need to have the following:
 
-Traditionally, each user must pay a fee called the gas fee to have their transaction processed by the network. The amount of gas required for a transaction varies, and it is determined by the complexity of the transaction and the current network congestion. This means gas fees can be very expensive, especially during times of high network usage. 
-The stress of paying gas fees before a transaction is implemented is a pin in the neck, especially since it is not a fixed amount. 
+1. Basic understanding of Solidity and smart contracts. 
+2. Basic understanding of the Celo network and its architecture
+3. Install Node.js and npm: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. npm is a package manager for Node.js. You can download Node.js and npm from the official website: https://nodejs.org/en/download/.
+4. A Celo wallet with some CELO tokens for paying gas fees
 
+## Understanding Account Abstraction
 
+Let's first discuss what account abstraction is and how it operates before getting started with its implementation on Celo.
 
-## How Does Account Abstraction Work on the Celo Blockchain?
+Each transaction in a conventional blockchain network is processed separately and costs a fixed amount of gas to complete. The amount of computational labor necessary to complete a network transaction is measured in gas. The amount of gas used increases with transaction complexity.
 
-We are making progress, isn't it?
+Account abstraction is a feature that allows for multiple transactions to be executed in a single transaction. It works by abstracting the accounts and transactions involved in a smart contract interaction, allowing for more flexibility and efficiency.
 
-The Celo team implemented account abstraction as a core feature of the platform.
+There are two types of account abstraction:
 
-The Celo blockchain uses a [proof-of-stake (PoS)](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) consensus mechanism. It has validators who are responsible for verifying transactions and adding them to the block on the blockchain. With this consensus mechanism, users can stake their tokens to participate in the validation of transactions. and they receive rewards for that. Energy consumption is more scalable as compared to blockchain networks that use [proof-of-work (PoW)](https://ethereum.org/en/developers/docs/consensus-mechanisms/pow/). 
-We have already established that Celo also uses a stablecoin called the Celo Dollar (cUSD), which is pegged to the US dollar. Therefore, cUSD is the currency used to pay gas fees for transactions on the network. 
+1. Transaction-level account abstraction: This allows for multiple transactions to be executed in a single transaction. It is useful for optimizing gas usage and reducing transaction fees.
 
-The account abstraction mechanism allows smart contracts to interact with multiple currencies and assets without being tied to any specific logic. This is achieved by abstracting away the native currency of the network and allowing smart contracts to interact with virtual balances that represent any currency or asset that is supported on the network. This makes it easier to build more complex and flexible decentralized applications that can help to reduce the complexity of smart contract code.
+2. Contract-level account abstraction: This allows for a smart contract to be abstracted, allowing for multiple transactions to be executed within the context of the contract. This is useful for complex smart contract interactions and for optimizing gas usage.
 
-Account abstraction on Celo allows smart contracts to be designated as "paying accounts." These contracts are given a special type of account that can hold both cUSD and [CELO](https://docs.celo.org/developer) tokens.  When a user interacts with a dApp that uses account abstraction, the smart contract can use its funds to pay the gas fees for the transaction. The contract can then charge the user for the gas fees in cUSD or other tokens. How does that sound?
+Account abstraction is a very important feature on the Celo blockchain, as it provides several benefits for smart contract developers and users. Some of the key benefits of account abstraction include:
 
-Smart contracts are written in a specific programming language, such as Solidity, and are designed to interact with the native currency. This means that if a smart contract wants to interact with another currency or asset, it needs to include specific logic to do so.
+1. Flexibility: With account abstraction, smart contracts can interact with any type of account on the Celo blockchain, including EOAs, contract accounts, and meta transactions. This makes it easier to write smart contracts that are flexible and compatible with different types of accounts.
 
-Here's an example of a Solidity smart contract that can be used to transfer and read the balances of CELO and cUSD.
+2. Efficiency: By using a common interface for interacting with different types of accounts, account abstraction can help to reduce the complexity and overhead of smart contract development on Celo.
 
-```solidity 
-// SPDX-License-Identifier: GPL-3.0
+2. User Experience: Account abstraction can also improve the user experience of decentralized applications on Celo by enabling users to interact with dApps without having to worry about gas costs. This can help to make dApps more accessible and user-friendly.
 
-pragma solidity >=0.7.0 <0.9.0;
+3. Security: Account abstraction can help to improve the security of smart contracts on Celo by reducing the risk of errors and vulnerabilities that can arise from working with different types of accounts.
 
-// Interface for the ERC20 token
-interface IERC20 {
-    function balanceOf(address account) external view returns (uint256);
-    function transfer(address recipient, uint256 amount) external returns (bool);
+## Creating an Account Abstraction Contract
+
+To implement account abstraction on Celo, you will create a smart contract that utilizes the account abstraction allows users to execute transactions using their accounts. 
+
+First, you need to define the interface of your contract. This will include the functions and variables that your contract will use like this:
+
+```solidity
+interface IAbstraction {
+    function executeTransaction(
+        address payable to,
+        uint256 value,
+        bytes calldata data
+    ) external returns (bool success, bytes memory returnData);
 }
+```
 
-contract AccountAbstraction{
-    // Address of the CELO token contract
-    address private constant celoAddress = 0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9;
-    // Address of the Celo Dollars token contract
-    address private constant cUSDAddress = 0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
-    
-    // Returns the balance of the user's CELO and cUSD tokens
-    function getBalances(address user) public view returns (uint256, uint256) {
-        uint256 cGLDBalance = IERC20(celoAddress).balanceOf(user);
-        uint256 cUSDBalance = IERC20(cUSDAddress).balanceOf(user);
-        return (cGLDBalance, cUSDBalance);
-    }
-    
-    // Sends cUSD tokens to the recipient
-    function sendCUSD(address recipient, uint256 amount) public {
-        require(IERC20(cUSDAddress).transfer(recipient, amount), "Transfer failed.");
-    }
-    
-    // Sends CELO tokens to the recipient
-    function sendCELO(address recipient, uint256 amount) public {
-        require(IERC20(celoAddress).transfer(recipient, amount), "Transfer failed.");
+This interface defines a single function called `executeTransaction`. This function takes three parameters:
+
+. `to`: the address of the account or contract that will receive the transaction
+`value`: the amount of wei to send with the transaction
+`data`: the data to send with the transaction
+
+The function returns two values:
+
+`success`: a boolean value indicating whether the transaction was successful or not
+`returnData`: the data returned by the transaction.
+
+Next, you need to implement the contract using the interface you defined above:
+
+```solidity
+contract Abstraction is IAbstraction {
+    function executeTransaction(
+        address payable to,
+        uint256 value,
+        bytes calldata data
+    ) external override returns (bool success, bytes memory returnData) {
+        (success, returnData) = to.call{value: value}(data);
     }
 }
 ```
-The above contract defines two functions to send cUSD and cGLD tokens, respectively. It also includes a `getBalances()` function that returns the user's balances of these tokens.
 
-## Benefits of Account Abstraction
-- Increased Efficiency: Abstraction enables the division of concerns among several network levels. The network's efficiency and scalability are increased as a result of this separation.
+This implementation defines a contract called `Abstraction` that implements the `IAbstraction` interface. The `executeTransaction` function simply calls the `call` function on the `to` address with the specified `value` and `data`. The `call` function is a low-level function that allows you to send a transaction to another account or contract on the Celo network
 
-- Flexibility: The Celo network can be used as the foundation for a variety of unique solutions and services thanks to abstraction. Because of this adaptability, developers can design programs that cater to certain user demands.
+Note that you used the `external` modifier to specify that this function can only be called from outside the contract. You also used the `override` modifier to indicate that you are overriding the function defined in the `IAbstraction` interface.
 
-- Enhanced Security: By isolating various network components, abstraction can aid in enhancing the security of the Celo network. This separation lowers the possibility of attacks and guarantees the network's stability and security.
+In order to guard against malicious activity and illegal access, it's crucial to include security checks in our contract. This is how to do it:
 
-- Easier Maintenance: Abstraction makes it easier to maintain the Celo network by reducing the complexity of the system. This makes it easier for developers to fix issues and add new features to the network.
+```solidity
+contract Abstraction is IAbstraction {
+    address public owner;
 
-- Interoperability: Abstraction can enable interoperability with other blockchain networks, allowing the Celo network to communicate and exchange information with other networks. This can enhance the overall functionality and usefulness of the network.
+    constructor() {
+        owner = msg.sender;
+    }
 
-## Downsides of Account Abstraction
-Just as it is with other networks, the Celo network is not without some challenges.
+    function executeTransaction(
+        address payable to,
+        uint256 value,
+        bytes calldata data
+    ) external override returns (bool success, bytes memory returnData) {
+        require(msg.sender == owner, "Only the contract owner can execute transactions");
+        require(to != address(0), "Invalid destination address");
 
-Below are some of them:
+        (success, returnData) = to.call{value: value}(data);
+        require(success, "Transaction failed");
+    }
 
-- Increased gas costs: Account abstraction might result in increased gas costs for transactions on the Celo network since it necessitates additional computation.
+    function changeOwner(address newOwner) external {
+        require(msg.sender == owner, "Only the contract owner can change the owner");
+        require(newOwner != address(0), "Invalid new owner address");
 
-- Account abstraction creates new security risks, such as the chance that the abstraction layer contains errors or that hostile actors could use system flaws to their advantage.
+        owner = newOwner;
+    }
+}
+```
 
-- Issues with interoperability: Account abstraction may make it more challenging to guarantee interoperability between various platforms for smart contracts, which may restrict the use cases and adoption of the Celo network.
+In this implementation, you added an `owner` variable to track the owner of the contract. You also added a constructor to set the owner to the address that deploys the contract.
+
+In the `executeTransaction` function, you added two security checks. First, you checked that the sender of the transaction is the owner of the contract. This prevents unauthorized access to the function. Second, you checked that the `to` address is not the null address (`0x0`). This ensures that the transaction has a valid destination.
+
+After executing the transaction, you added a third security check to ensure that the transaction was successful. If it wasn't, you revert the transaction.
+
+Finally, you added a `changeOwner` function that allows the current owner to change the owner of the contract. You added security checks to ensure that only the current owner can call this function and that the new owner address is valid.
+
+## Deploying the Contract
+
+Now that you have created your account abstraction contract, you need to deploy it to the Celo network. To do this, you need to follow these steps:
+
+- Compile the contract
+Use the Solidity compiler to compile the contract code. You can do this using the following command:
+
+```bash
+solc Abstraction.sol --bin --abi --optimize -o build/
+```
+
+This command will compile the Abstraction.sol contract and generate the binary code, ABI (Application Binary Interface), and optimized code in the build/ directory.
+
+Now that we have written and compiled the account abstraction contract, we can deploy it on the Celo network using the Celo SDK and JavaScript.
+
+- Open a new terminal window and navigate to your project directory. Install the Celo SDK by running the following command:
+
+```bash
+npm install @celo/contractkit
+```
+
+Next, you will import the necessary modules and set up the connection to the Celo network by adding the following code to a new JavaScript file:
+
+```javascript
+const Web3 = require('web3');
+const ContractKit = require('@celo/contractkit');
+
+const web3 = new Web3('https://forno.celo.org');
+const kit = ContractKit.newKit('https://forno.celo.org');
+````
+In this code, you are importing the necessary modules for Web3 and the Celo SDK, and then creating instances of Web3 and ContractKit to connect to the Celo network.
+
+```javascript
+async function deployAbstractionContract() {
+    const accounts = await kit.web3.eth.getAccounts();
+    const Abstraction = new kit.web3.eth.Contract(AbstractionContract.abi);
+
+    const tx = Abstraction.deploy({
+        data: AbstractionContract.bytecode
+    });
+
+    const txObject = {
+        from: accounts[0],
+        gasPrice: '1000000000',
+        gas: '5000000',
+        value: '0'
+    };
+
+    const txPromise = tx.send(txObject);
+
+    const receipt = await txPromise;
+    console.log(receipt);
+}
+```
+
+In this code, you are creating a new function called `deployAbstractionContract` that will deploy the account abstraction contract on the Celo network. WYou will first get an array of available accounts using the Celo SDK, and then create a new instance of the contract using the ABI and bytecode generated by Solidity compiler.
+
+Next, you will create a new transaction object with the necessary gas and gas price settings, and then send the transaction using the `send` function. Finally, you will wait for the transaction to be mined and print out the receipt.
+
+Run the `deployAbstractionContract` function by adding the following code:
+
+```javascript
+deployAbstractionContract()
+    .then(() => {
+        console.log('Contract deployed successfully!');
+        process.exit(0);
+    })
+    .catch((error) => {
+        console.error('Error deploying contract:', error);
+        process.exit(1);
+    });
+```
+
+In this code, you are running the `deployAbstractionContract` function and then printing out a success message if the contract was deployed successfully, or an error message if it failed.
+
+Well-done for coming this far, you are almost there...
+
+Now it's time for you you to deploy your contract with the command below;
+
+```bash
+node deploy.js
+```
+
+If everything worked correctly, you should see a success message in the terminal indicating that the account abstraction contract was deployed successfully.
+
+## Interacting with the Contract
+
+Now that you have deployed the account abstraction contract, you can interact with it using JavaScript and the Celo SDK. In this section, you will create a new JavaScript function that will execute a transaction using the account abstraction contract.
+
+- Create a new JavaScript function to execute a transaction using the account abstraction contract by adding the following code:
+
+```javascript
+async function executeTransaction(recipient, value, data) {
+  const accounts = await kit.web3.eth.getAccounts();
+  const contract = new kit.web3.eth.Contract(abi, contractAddress);
+  const txObject = {
+    from: accounts[0],
+    to: contractAddress,
+    gas: 1000000,
+    gasPrice: await kit.web3.eth.getGasPrice(),
+    data: contract.methods.executeTransaction(recipient, value, data).encodeABI()
+  };
+  const tx = await kit.sendTransactionObject(txObject);
+  const receipt = await tx.waitReceipt();
+  console.log(`Transaction receipt:\n${JSON.stringify(receipt, null, 2)}`);
+  return receipt;
+}
+```
+
+The `executeTransaction` function is an asynchronous function that takes three parameters: `recipient`, `value`, and `data`. These parameters are used to send a transaction to the `AccountAbstraction` contract on the Celo network.
+
+Inside the function, you will first get the user's Celo account using `kit.web3.eth.getAccounts()`. You will then create a new instance of the `Contract` class from `@celo/contractkit` using the contract ABI and address.
+
+Next, you created a `txObject` with the `from` address, `to` address, gas limit, gas price, and encoded transaction data using the `contract.methods.executeTransaction` method. You will then use `kit.sendTransactionObject` to send the transaction and `tx.waitReceipt()` to wait for the transaction to be confirmed.
+
+Finally, you loged the transaction receipt to the console and returned it.
+
+To use this function, you need to import the `contractkit` module and initialize it with a provider;
+```bash
+new ContractKit('https://forno.celo.org')
+```
+You also need to provide the contract ABI and address as arguments to the function.
+
+Here is an example of how to use the `executeTransaction` function:
+
+```javascript
+const { ContractKit } = require('@celo/contractkit');
+
+const kit = ContractKit.newKit('https://forno.celo.org');
+const abi = [/* AccountAbstraction contract ABI */];
+const contractAddress = '<contract-address>';
+
+async function main() {
+  const recipient = '<recipient-address>';
+  const value = '1000000000000000000'; // 1 CELO
+  const data = '0x'; // empty data
+
+  const receipt = await executeTransaction(recipient, value, data);
+
+  console.log(`Transaction receipt:\n${JSON.stringify(receipt, null, 2)}`);
+}
+
+main().catch(console.error);
+```
+
+This code imports `ContractKit` from `@celo/contractkit`, initializes it with the Forno endpoint, and defines the `abi` and `contractAddress` variables. It then defines an async `main` function that calls the `executeTransaction` function with the `recipient`, `value`, and `data` parameters, and logs the transaction receipt to the console.
+
+To run this code, save it to a file and name it interact.js.
+
+Then run this command below in your terminal:
+
+```bash
+node interact.js
+```
 
 ## Conclusion
-In conclusion, even though account abstraction has some challenges, the benefits are enormous. Therefore it is crucial to carefully examine and manage any risks and drawbacks that could come with this feature, and take the full advantages embedded in it.
+In this tutorial, you have learnt about account abstraction on the Celo network and how it can help to improve the user experience and security of smart contract interactions. You have also learnt how to create an account abstraction contract using Solidity and how to deploy and interact with it using JavaScript and the Celo SDK.
 
+By using account abstraction, developers can create more user-friendly and secure applications on the Celo network. With the help of this tutorial, you can now start exploring the possibilities of account abstraction and building powerful decentralized applications on the Celo network.
 
 
 
